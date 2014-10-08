@@ -1,7 +1,17 @@
 class Account < ActiveRecord::Base
   self.table_name = "account"
 
-  def as_json(options = {})
-    super(options.merge(:only => [:account_id, :product_cd]))
+  belongs_to :customer, :foreign_key => :cust_id
+
+  def as_json(options={})
+    super(
+      :include => [
+        :customer => {
+          :methods => [
+            :name
+          ]
+        }
+      ]
+    )
   end
 end
