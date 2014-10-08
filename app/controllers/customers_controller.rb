@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
 
   def index
-    render json: Customer.includes(:accounts, :business, :individual).all
+    render json: Customer.with_accounts
   end
 
   def show

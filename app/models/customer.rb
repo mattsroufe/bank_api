@@ -8,16 +8,17 @@ class Customer < ActiveRecord::Base
   delegate :name, :to => :business, :prefix => true, :allow_nil => true
   delegate :name, :to => :individual, :prefix => true, :allow_nil => true
 
-  def as_json(options={})
-    super(
+  def name
+    individual_name || business_name
+  end
+
+  def self.with_accounts
+    includes(:accounts, :business, :individual).
+    as_json(
       :methods => :name,
       :include => [
         :accounts
       ]
     )
-  end
-
-  def name
-    individual_name || business_name
   end
 end
