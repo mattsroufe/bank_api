@@ -12,12 +12,27 @@ class Customer < ActiveRecord::Base
     individual_name || business_name
   end
 
+  def as_json(options = {})
+    super(
+      :methods => [
+        :name
+      ]
+    )
+  end
+
   def self.with_accounts
-    includes(:accounts, :business, :individual).
+    includes(:business, :individual, :accounts => [:transactions, :product]).
     as_json(
       :methods => :name,
+      :only => [:cust_id, :fed_id, :address, :city, :state, :postal_code],
       :include => [
-        :accounts
+        :business,
+        :accounts => {
+          :include => [
+            :transactions,
+            :product
+          ]
+        }
       ]
     )
   end
