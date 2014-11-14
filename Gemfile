@@ -5,7 +5,7 @@ gem 'rails', '4.1.6'
 gem 'rails-api'
 gem 'rspec-rails'
 gem 'active_model_serializers'
-
+gem 'grape'
 gem 'spring', :group => :development
 
 gem 'mysql2'
