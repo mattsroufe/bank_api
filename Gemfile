@@ -6,6 +6,8 @@ gem 'rails-api'
 gem 'rspec-rails'
 gem 'active_model_serializers'
 gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 gem 'spring', :group => :development
 
 gem 'mysql2'
