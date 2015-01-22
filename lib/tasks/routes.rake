@@ -1,4 +1,4 @@
-namespace :api do
+# namespace :api do
   desc "API Routes"
   task :routes => :environment do
     API::Base.routes.each do |api|
@@ -7,4 +7,4 @@ namespace :api do
       puts "     #{method} #{path}"
     end
   end
-end
+# end

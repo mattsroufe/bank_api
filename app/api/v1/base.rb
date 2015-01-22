@@ -2,6 +2,7 @@ module V1
   class Base < Grape::API
     format :json
 
+    mount V1::Accounts
     mount V1::Customers
 
     add_swagger_documentation(
